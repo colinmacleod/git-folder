@@ -1,0 +1,20 @@
+# Development-specific overrides
+# Use with: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  backend:
+    build:
+      args:
+        - NODE_ENV=development
+    command: npm run dev
+    volumes:
+      # Mount the entire backend directory for development
+      - ./backend:/app
+      # Use anonymous volume for node_modules to avoid conflicts
+      - /app/node_modules
+      # Mount .env file
+      - ./backend/.env:/app/.env
+    environment:
+      - DEBUG=*
+      - NODE_ENV=development
+      - DEV_HOT_RELOAD=true

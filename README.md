@@ -2,7 +2,7 @@
 
 A simple web UI for sharing Git repository folders with non-technical users. Think Dropbox or Google Drive, but powered by Git.
 
-![Status](https://img.shields.io/badge/status-planning-orange)
+![Status](https://img.shields.io/badge/status-development-yellow)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## Overview
@@ -28,7 +28,7 @@ Perfect for indie developers and small teams who need to share assets with creat
 - Web developers collaborating with designers
 - Any project where non-technical users need file access
 
-## Quick Start (Coming Soon)
+## Quick Start
 
 ```bash
 # Clone the repository
@@ -36,20 +36,19 @@ git clone https://github.com/yourusername/git-folder.git
 cd git-folder
 
 # Copy environment variables
-cp .env.example .env
+cp .env.example backend/.env
 
 # Start with Docker Compose
-docker-compose up
+docker compose up --build
 ```
 
-Visit `http://localhost:8080` to access git-folder.
+Visit `http://localhost:8080/api/health` to verify the backend is running.
 
 ## Development
 
 ### Requirements
 
 - Docker Desktop (Windows 11, macOS, or Linux)
-- Node.js 20+ (for local development)
 - Git with LFS support
 
 ### Windows 11 Setup
@@ -57,17 +56,18 @@ Visit `http://localhost:8080` to access git-folder.
 1. Install Docker Desktop for Windows
 2. Enable WSL2 backend
 3. Clone this repository
-4. Follow the setup guide in `/docs/windows-setup.md` (coming soon)
+4. Follow the setup guide in `/docs/dev-env.md`
 
 ### Project Structure
 
 ```
 git-folder/
 ├── backend/          # Express.js API server
-├── frontend/         # React UI
+├── frontend/         # React UI (coming soon)
 ├── docker/          # Docker configuration
+├── docs/            # Documentation
 ├── planning/        # Project specifications
-└── scripts/         # Installation scripts
+└── scripts/         # Installation scripts (coming soon)
 ```
 
 ## Configuration
@@ -93,49 +93,22 @@ See `.env.example` for all configuration options.
 
 ## Roadmap
 
-### Phase 1: Foundation ✅ Planning Complete
-- Project setup and Docker configuration
-- Basic backend with health checks
-- Development environment
-
-### Phase 2: Authentication & Database
-- OAuth providers integration
-- User management
-- SSH key generation
-
-### Phase 3: Git Integration
-- File operations (upload/download)
-- Version history
-- Git LFS support
-
-### Phase 4: Frontend
-- Responsive UI
-- File browser
-- Drag-and-drop uploads
-
-### Phase 5: Advanced Features
-- Public share links
-- Email notifications
-- Real-time updates
-
-### Phase 6: Production Ready
-- Testing suite
-- Documentation
-- Performance optimization
+See the [detailed roadmap](./planning/roadmap.md) for development phases and progress.
 
 ## Contributing
 
-This project is currently in the planning phase. Contributions will be welcome once the initial implementation is complete.
+This project is currently in early development. Contributions will be welcome once the core functionality is complete.
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT License - see [LICENSE](./LICENSE) file for details
 
 ## Acknowledgments
 
 - Built for creative professionals who deserve better than command-line Git
 - Inspired by the simplicity of Dropbox and Google Drive
 - Powered by the reliability of Git
+- Vibe coding using Claude Code
 
 ---
 

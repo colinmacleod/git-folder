@@ -1,0 +1,57 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+      target: development
+    container_name: git-folder-backend
+    ports:
+      - "8080:8080"
+    volumes:
+      # Mount source code for hot reloading
+      - ./backend:/app
+      - /app/node_modules
+      # Persistent data volumes
+      - ./docker/data/repos:/app/repos
+      - ./docker/data/ssh:/app/ssh
+      - ./docker/data/database:/app/data
+      - ./docker/data/logs:/app/logs
+    environment:
+      - NODE_ENV=development
+      - AUTH_MODE=dev
+    env_file:
+      - ./backend/.env
+    networks:
+      - git-folder-network
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+  # Future frontend service
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/Dockerfile.frontend
+  #     target: development
+  #   container_name: git-folder-frontend
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   environment:
+  #     - NODE_ENV=development
+  #   networks:
+  #     - git-folder-network
+  #   depends_on:
+  #     - backend
+
+networks:
+  git-folder-network:
+    driver: bridge
+
+volumes:
+  repos:
+  ssh:
+  database:
+  logs:
