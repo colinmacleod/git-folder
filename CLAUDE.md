@@ -24,9 +24,11 @@ When completing a development phase or significant milestone, execute these task
    - `planning/specification.md` - Update if requirements changed
 
 3. **Generate Git Commit Message**
-   - Create a comprehensive commit message summarizing all changes
+   - Create a SHORT commit message (subject line + 1-8 lines description, fewer is better)
    - Use conventional commit format
-   - Include list of major additions/changes
+   - Subject line should be under 50 characters
+   - Each description line should be under 72 characters
+   - Focus on WHAT changed, not implementation details
    - DO NOT execute git commands - only provide the message
 
 ### Common Tasks
@@ -90,6 +92,7 @@ docker compose logs -f backend
 
 ## Important Notes
 
+- **NEVER run git add, git commit, or git rm commands** - NEVER NEVER NEVER
 - This is a PUBLIC repository - no secrets in code
 - All sensitive config goes in `.env` (not `.env.example`)
 - Git-folder acts as a Git client - no custom Git modifications

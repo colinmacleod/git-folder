@@ -72,26 +72,26 @@ git-folder/
 ### Phase 2: Authentication & Database
 
 #### Database Layer
-- [ ] Design SQLite schema
-- [ ] Implement database migrations (using knex)
-- [ ] Create data models (users, folders, shares)
+- [x] Design SQLite schema
+- [x] Implement database migrations (using knex)
+- [x] Create data models (users, folders, shares)
 - [ ] Add NocoDB adapter interface (optional)
-- [ ] Set up connection pooling
+- [x] Set up connection pooling
 
 #### Authentication System
-- [ ] Implement dev mode (no auth)
-- [ ] GitHub OAuth integration
-- [ ] Google OAuth integration  
-- [ ] Discord OAuth integration
-- [ ] Session management with express-session
+- [x] Implement dev mode (no auth)
+- [x] GitHub OAuth integration
+- [x] Google OAuth integration  
+- [x] Discord OAuth integration
+- [x] Session management with express-session
 - [ ] JWT token generation and validation
 
 #### User Management
-- [ ] User profile creation from OAuth
-- [ ] SSH key generation per user
-- [ ] Encrypted key storage in database
-- [ ] Support for user-provided SSH keys
-- [ ] User preferences storage
+- [x] User profile creation from OAuth
+- [x] SSH key generation per user
+- [x] Encrypted key storage in database
+- [x] Support for user-provided SSH keys
+- [x] User preferences storage
 
 ### Phase 3: Git Integration
 

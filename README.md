@@ -37,12 +37,21 @@ cd git-folder
 
 # Copy environment variables
 cp .env.example backend/.env
+# Edit backend/.env and set AUTH_MODE=dev for local development
 
 # Start with Docker Compose
 docker compose up --build
 ```
 
 Visit `http://localhost:8080/api/health` to verify the backend is running.
+
+### Available Endpoints (Phase 2)
+
+- `GET /api/health` - Health check
+- `GET /api/auth/status` - Check authentication status
+- `POST /api/auth/dev-login` - Dev mode login (when AUTH_MODE=dev)
+- `GET /api/user/profile` - Get user profile
+- `POST /api/user/ssh/generate` - Generate SSH keys
 
 ## Development
 
@@ -83,10 +92,12 @@ See `.env.example` for all configuration options.
 
 ## Technology Stack
 
-- **Backend**: Node.js, Express, TypeScript
-- **Frontend**: React, TypeScript, Vite
-- **Database**: SQLite (or NocoDB)
-- **Authentication**: OAuth 2.0 (GitHub, Google, Discord)
+- **Backend**: Node.js, Express, TypeScript, Objection.js
+- **Frontend**: React, TypeScript, Vite (coming in Phase 4)
+- **Database**: SQLite with Knex migrations
+- **Authentication**: Passport.js with OAuth 2.0 (GitHub, Google, Discord)
+- **Session Management**: express-session with SQLite store
+- **SSH Key Management**: node-forge with AES-256-GCM encryption
 - **File Storage**: Git + Git LFS
 - **Email**: Mailgun
 - **Deployment**: Docker + Docker Compose
