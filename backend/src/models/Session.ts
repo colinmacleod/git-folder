@@ -30,7 +30,8 @@ export class Session extends Model {
   }
 
   static get relationMappings() {
-    const User = require('./User').User;
+    // Lazy load to avoid circular dependencies
+    const { User } = require('./User');
 
     return {
       user: {

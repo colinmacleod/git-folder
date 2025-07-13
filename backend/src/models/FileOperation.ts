@@ -42,8 +42,9 @@ export class FileOperation extends Model {
   }
 
   static get relationMappings() {
-    const SharedFolder = require('./SharedFolder').SharedFolder;
-    const User = require('./User').User;
+    // Lazy load to avoid circular dependencies
+    const { SharedFolder } = require('./SharedFolder');
+    const { User } = require('./User');
 
     return {
       sharedFolder: {

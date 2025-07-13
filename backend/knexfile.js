@@ -31,6 +31,21 @@ const config = {
     useNullAsDefault: true
   },
 
+  test: {
+    client: 'better-sqlite3',
+    connection: {
+      filename: './data/test.db'
+    },
+    migrations: {
+      directory: './src/database/migrations',
+      extension: 'js'
+    },
+    seeds: {
+      directory: './src/database/seeds'
+    },
+    useNullAsDefault: true
+  },
+
   production: {
     client: 'better-sqlite3',
     connection: {

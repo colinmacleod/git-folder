@@ -38,10 +38,11 @@ export class User extends Model {
   }
 
   static get relationMappings() {
-    const Repository = require('./Repository').Repository;
-    const FolderPermission = require('./FolderPermission').FolderPermission;
-    const FileOperation = require('./FileOperation').FileOperation;
-    const Session = require('./Session').Session;
+    // Lazy load to avoid circular dependencies
+    const { Repository } = require('./Repository');
+    const { FolderPermission } = require('./FolderPermission');
+    const { FileOperation } = require('./FileOperation');
+    const { Session } = require('./Session');
 
     return {
       repositories: {

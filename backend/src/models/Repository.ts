@@ -34,8 +34,9 @@ export class Repository extends Model {
   }
 
   static get relationMappings() {
-    const User = require('./User').User;
-    const SharedFolder = require('./SharedFolder').SharedFolder;
+    // Lazy load to avoid circular dependencies
+    const { User } = require('./User');
+    const { SharedFolder } = require('./SharedFolder');
 
     return {
       owner: {

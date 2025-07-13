@@ -36,9 +36,10 @@ export class SharedFolder extends Model {
   }
 
   static get relationMappings() {
-    const Repository = require('./Repository').Repository;
-    const FolderPermission = require('./FolderPermission').FolderPermission;
-    const FileOperation = require('./FileOperation').FileOperation;
+    // Lazy load to avoid circular dependencies
+    const { Repository } = require('./Repository');
+    const { FolderPermission } = require('./FolderPermission');
+    const { FileOperation } = require('./FileOperation');
 
     return {
       repository: {

@@ -1,0 +1,57 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Repository = void 0;
+const objection_1 = require("objection");
+class Repository extends objection_1.Model {
+    static get tableName() {
+        return 'repositories';
+    }
+    static get jsonSchema() {
+        return {
+            type: 'object',
+            required: ['name', 'git_url', 'owner_id'],
+            properties: {
+                id: { type: 'integer' },
+                name: { type: 'string', maxLength: 255 },
+                description: { type: 'string' },
+                git_url: { type: 'string', maxLength: 500 },
+                local_path: { type: 'string', maxLength: 500 },
+                owner_id: { type: 'integer' },
+                is_active: { type: 'boolean' },
+                created_at: { type: 'string', format: 'date-time' },
+                updated_at: { type: 'string', format: 'date-time' }
+            }
+        };
+    }
+    static get relationMappings() {
+        // Lazy load to avoid circular dependencies
+        const { User } = require('./User');
+        const { SharedFolder } = require('./SharedFolder');
+        return {
+            owner: {
+                relation: objection_1.Model.BelongsToOneRelation,
+                modelClass: User,
+                join: {
+                    from: 'repositories.owner_id',
+                    to: 'users.id'
+                }
+            },
+            sharedFolders: {
+                relation: objection_1.Model.HasManyRelation,
+                modelClass: SharedFolder,
+                join: {
+                    from: 'repositories.id',
+                    to: 'shared_folders.repository_id'
+                }
+            }
+        };
+    }
+    $beforeInsert() {
+        this.created_at = new Date();
+        this.updated_at = new Date();
+    }
+    $beforeUpdate() {
+        this.updated_at = new Date();
+    }
+}
+exports.Repository = Repository;
