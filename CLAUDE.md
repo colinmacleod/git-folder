@@ -10,25 +10,44 @@ git-folder is a web UI for sharing Git repository folders with non-technical use
 
 ### End of Phase Commands
 
-When completing a development phase or significant milestone, execute these tasks:
+**CRITICAL**: No phase is considered complete until ALL the following criteria are met:
 
-1. **Update README.md**
+1. **All Functions Have Unit Tests**
+   - Every service, API endpoint, middleware, and utility function must have comprehensive unit tests
+   - Test coverage should include success cases, error cases, and edge cases
+   - Mock external dependencies (database, file system, child processes, etc.)
+
+2. **ALL Tests Must Pass**
+   - Run `npm test` - every single test must pass with 0 failures
+   - No skipped tests without explicit justification
+   - No timeouts or hanging tests
+   - Fix any issues with test environment (Docker, git availability, permissions, etc.)
+
+3. **Update README.md**
    - Update the status badge if moving to a new phase
    - Update the "Quick Start" section if it's now functional
    - Add any new configuration options to the Configuration section
    - Update technology stack if new tools were added
 
-2. **Update Planning Documents**
+4. **Update Planning Documents**
    - `planning/project-plan.md` - Mark completed tasks with [x]
    - `planning/roadmap.md` - Update current phase status
    - `planning/specification.md` - Update if requirements changed
 
-3. **Generate Git Commit Message**
+5. **Generate Git Commit Message**
    - Create a SHORT commit message (subject line + 1-8 lines description, fewer is better)
-   - Use conventional commit format
+   - Use conventional commit format (feat:, fix:, test:, docs:, etc.)
    - Subject line should be under 50 characters
    - Each description line should be under 72 characters
    - Focus on WHAT changed, not implementation details
+   - Example format:
+     ```
+     type: Short description under 50 chars
+     
+     - Brief point about what changed
+     - Another change (keep it concise)
+     - Max 1-8 lines total (fewer is better)
+     ```
    - DO NOT execute git commands - only provide the message
 
 ### Common Tasks

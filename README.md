@@ -45,13 +45,21 @@ docker compose up --build
 
 Visit `http://localhost:8080/api/health` to verify the backend is running.
 
-### Available Endpoints (Phase 2)
+### Available Features
 
-- `GET /api/health` - Health check
-- `GET /api/auth/status` - Check authentication status
-- `POST /api/auth/dev-login` - Dev mode login (when AUTH_MODE=dev)
-- `GET /api/user/profile` - Get user profile
-- `POST /api/user/ssh/generate` - Generate SSH keys
+**Phase 2 - Authentication & Database** ✅ Complete
+- User authentication (GitHub, Google, Discord OAuth)
+- SSH key management with secure encryption
+- User profiles and preferences
+- SQLite database with migrations
+
+**Phase 3 - Git Integration** ✅ Complete  
+- Git repository operations (create, clone, delete)
+- File upload/download with Git LFS support (up to 1GB)
+- Branch management (create, switch, merge, delete)
+- Chunked uploads with progress tracking and resume
+- Version history and file operations API
+- Comprehensive test coverage
 
 ## Development
 

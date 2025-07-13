@@ -8,6 +8,10 @@ import { logger } from './utils/logger';
 import healthRouter from './api/health';
 import authRouter from './api/auth';
 import userRouter from './api/user';
+import repositoriesRouter from './api/repositories';
+import filesRouter from './api/files';
+import branchesRouter from './api/branches';
+import sharedFoldersRouter from './api/shared-folders';
 import { authMiddleware } from './middleware/auth';
 import './database/connection';
 import passport from './auth/passport';
@@ -56,6 +60,10 @@ app.use(authMiddleware);
 app.use('/api/health', healthRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
+app.use('/api/repositories', repositoriesRouter);
+app.use('/api/files', filesRouter);
+app.use('/api/branches', branchesRouter);
+app.use('/api/shared-folders', sharedFoldersRouter);
 
 // Error handling
 app.use(errorHandler);
